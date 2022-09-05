@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Cvecara.Data
+namespace Cvecara.Data.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
