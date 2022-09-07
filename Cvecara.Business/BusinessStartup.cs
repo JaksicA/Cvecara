@@ -14,6 +14,7 @@ namespace Cvecara.Business
         public static IServiceCollection RegisterBusinessDependencies(this IServiceCollection services)
         {
             services.AddScoped<IItemManager, ItemManager>();
+            services.AddScoped<IInventoryManager, InventoryManager>();
 
             return services;
         }

@@ -15,5 +15,6 @@ namespace Cvecara.Data.Data
         }
 
         public DbSet<Item> Items { get; set; }
+        public DbSet<Inventory> Inventory { get; set; }
     }
 }
