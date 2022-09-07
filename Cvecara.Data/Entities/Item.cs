@@ -11,7 +11,11 @@ namespace Cvecara.Data.Entities
     {
         [Key]
         public int Id { get; set; }
+
+        [Display(Name = "Naziv")]
         public string Name { get; set; }
+
+        [Display(Name = "Cena")]
         public int Price { get; set; }
     }
 }
