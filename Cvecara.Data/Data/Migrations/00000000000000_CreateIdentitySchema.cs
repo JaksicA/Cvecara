@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 
-namespace Cvecara.Data.Migrations
+namespace Cvecara.Data.Data.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {
