@@ -1,3 +1,5 @@
+using Cvecara.Business;
+using Cvecara.Data;
 using Cvecara.Data.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -34,6 +36,10 @@ namespace Cvecara
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.RegisterDataProjectDependencies();
+            services.RegisterBusinessDependencies();
+
             services.AddControllersWithViews();
         }
 
