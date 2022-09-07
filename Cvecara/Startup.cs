@@ -34,7 +34,8 @@ namespace Cvecara
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<IdentityUser>()
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.RegisterDataProjectDependencies();
@@ -44,7 +45,7 @@ namespace Cvecara
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, RoleManager<IdentityRole> roleManager)
         {
             if (env.IsDevelopment())
             {
@@ -64,6 +65,8 @@ namespace Cvecara
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            Roles.SeedRoles(roleManager).Wait();
 
             app.UseEndpoints(endpoints =>
             {

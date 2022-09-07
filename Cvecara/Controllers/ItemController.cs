@@ -1,5 +1,6 @@
 ﻿using Cvecara.Business.Managers.Contracts;
 using Cvecara.Data.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Cvecara.Controllers
 {
+    [Authorize(Roles = Roles.Employee)]
     public class ItemController : Controller
     {
         private readonly IItemManager _manager;
