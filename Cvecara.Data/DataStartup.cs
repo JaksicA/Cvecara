@@ -14,6 +14,7 @@ namespace Cvecara.Data
         public static IServiceCollection RegisterDataProjectDependencies(this IServiceCollection services)
         {
             services.AddScoped<IItemRepository, ItemRepository>();
+            services.AddScoped<IInventoryRepository, InventoryRepository>();
 
             return services;
         }
