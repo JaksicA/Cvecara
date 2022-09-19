@@ -12,8 +12,12 @@ namespace Cvecara.Data.Entities
     {
         [Key]
         [ForeignKey(nameof(Entities.Item))]
+        [Display(Name = "Ime")]
         public int Id { get; set; }
+        [Display(Name = "Ime")]
         public Item Item { get; set; }
+       
+        [Display(Name = "Kolicina")]
         public int Quantity { get; set; }
     }
 }
