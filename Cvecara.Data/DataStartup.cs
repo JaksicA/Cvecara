@@ -16,6 +16,7 @@ namespace Cvecara.Data
             services.AddScoped<IItemRepository, ItemRepository>();
             services.AddScoped<IInventoryRepository, InventoryRepository>();
             services.AddScoped<IArrangementRepository, ArrangementRepository>();
+            services.AddScoped<IArrangementItemRepository, ArrangementItemRepository>();
 
             return services;
         }

@@ -14,7 +14,7 @@ namespace Cvecara.Business.Managers
         where TEntity : class, IEntity
         where TRepository : IBaseRepository<TEntity>
     {
-        private readonly TRepository _repository;
+        protected readonly TRepository _repository;
 
         public BaseManager(TRepository repository)
         {
@@ -36,7 +36,7 @@ namespace Cvecara.Business.Managers
             return _repository.GetFirst(filter, includes);
         }
 
-        public void Remove(int id)
+        public virtual void Remove(int id)
         {
             _repository.Remove(id);
         }

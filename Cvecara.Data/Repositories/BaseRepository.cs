@@ -13,7 +13,7 @@ namespace Cvecara.Data.Repositories
 {
     internal abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class, IEntity
     {
-        private readonly ApplicationDbContext _context;
+        protected readonly ApplicationDbContext _context;
 
         public BaseRepository(ApplicationDbContext context)
         {
@@ -49,7 +49,7 @@ namespace Cvecara.Data.Repositories
             return query.First(filter);
         }
 
-        public void Remove(int id)
+        public virtual void Remove(int id)
         {
             _context.Set<TEntity>().Remove(GetFirst(e => e.Id == id));
             _context.SaveChanges();

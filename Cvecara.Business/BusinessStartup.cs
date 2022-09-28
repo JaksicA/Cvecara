@@ -16,6 +16,7 @@ namespace Cvecara.Business
             services.AddScoped<IItemManager, ItemManager>();
             services.AddScoped<IInventoryManager, InventoryManager>();
             services.AddScoped<IArrangementManager, ArrangementManager>();
+            services.AddScoped<IArrangementItemManager, ArrangementItemManager>();
 
             return services;
         }

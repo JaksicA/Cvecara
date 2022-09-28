@@ -17,5 +17,12 @@ namespace Cvecara.Data.Data
         public DbSet<Item> Items { get; set; }
         public DbSet<Inventory> Inventory { get; set; }
         public DbSet<Arrangement> Arrangements { get; set; }
+        public DbSet<ArrangementItem> ArrangementItems { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Entity<ArrangementItem>().HasKey(k => new { k.ArrangementId, k.ItemId });
+        }
     }
 }
