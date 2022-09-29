@@ -8,16 +8,22 @@ using Microsoft.EntityFrameworkCore;
 using Cvecara.Data.Data;
 using Cvecara.Data.Entities;
 using Cvecara.Business.Managers.Contracts;
+using Microsoft.AspNetCore.Authorization;
+using Cvecara.Business;
+using System.Linq.Expressions;
 
 namespace Cvecara.Controllers
 {
+    [Authorize]
     public class ArrangementsController : Controller
     {
         private readonly IArrangementManager _manager;
+        private readonly IArrangementItemManager _arrangementItemManager;
 
-        public ArrangementsController(IArrangementManager manager)
+        public ArrangementsController(IArrangementManager manager, IArrangementItemManager arrangementItemManager)
         {
             _manager = manager;
+            _arrangementItemManager = arrangementItemManager;
         }
 
         // GET: Arrangements
@@ -29,12 +35,16 @@ namespace Cvecara.Controllers
         // GET: Arrangements/Details/5
         public IActionResult Details(int id)
         {
-           return View(_manager.GetFirst(e => e.Id == id));
+            var arrangementItems = _arrangementItemManager.Get(e => e.ArrangementId == id,
+                new List<Expression<Func<ArrangementItem, object>>> { e => e.Arrangement, e => e.Item });
+            ViewData["ArrangementItems"] = arrangementItems;
+            return View(_manager.GetFirst(e => e.Id == id));
         }
 
         // GET: Arrangements/Create
         public IActionResult Create()
         {
+            ViewData["DecorationPrice"] = Constants.DecorationPrice;
             return View();
         }
 

@@ -21,7 +21,7 @@ namespace Cvecara.Business.Managers
             _repository = repository;
         }
 
-        public void Add(TEntity entity)
+        public virtual void Add(TEntity entity)
         {
             _repository.Add(entity);
         }
@@ -41,7 +41,7 @@ namespace Cvecara.Business.Managers
             _repository.Remove(id);
         }
 
-        public void Update(TEntity entity)
+        public virtual void Update(TEntity entity)
         {
             _repository.Update(entity);
         }

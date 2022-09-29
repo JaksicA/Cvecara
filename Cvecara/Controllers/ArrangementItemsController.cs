@@ -9,9 +9,11 @@ using Cvecara.Data.Data;
 using Cvecara.Data.Entities;
 using Cvecara.Business.Managers.Contracts;
 using System.Linq.Expressions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Cvecara.Controllers
 {
+    [Authorize]
     public class ArrangementItemsController : Controller
     {
         private readonly IArrangementItemManager _arrangementItemManager;
